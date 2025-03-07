@@ -1,33 +1,40 @@
+// getting the inputs from the HTML
+let pets=[];
+let inputName = document.getElementById("txtName");
+let inputAge = document.getElementById("txtAge");
+let inputGender = document.getElementById("txtGender");
+let inputBreed = document.getElementById("txtBreed");
 
-//creating the pets
-let pet1 = {
-    name:"Scooby",
-    age:60,
-    gender:"Male"
+// constructor
+function Pet(name,age,gender,breed){
+    this.name=name;
+    this.age=age;
+    this.gender=gender;
+    this.breed=breed;
 }
-let pet2 = {
-    name:"Scrappy",
-    age:50,
-    gender:"Male"
+//register function
+function register(){
+    // create the obj
+    let newPet = new Pet(inputName.value,inputAge.value,inputGender.value,inputBreed.value);
+    //push the obj into array
+    pets.push(newPet);
+    console.log(pets);
 }
-let pet3={
-    name:"Tweety",
-    age:70,
-    gender:"Female"
-}
-
-let pets = [pet1,pet2,pet3]; // empty array
-
-//pets.push(pet1,pet2,pet3);
-console.log(pets);
-
-function displayNames(){
-    console.log(pets[0].name);
-    console.log(pets[1].name);
-    console.log(pets[2].name);
-
-    console.log("We have " + pets.length + " pets");
-
+function clearInputs(){
+    
 }
 
-displayNames();
+//init function
+function init(){
+    // create three obj
+    let pet1 = new Pet("Scooby",99,"Male","Dane");
+    let pet2 = new Pet("Scrappy",89,"Male","Mixed");
+    let pet3 = new Pet("Speedy",99,"Male","Mixed");
+
+    // push the obj to the array
+    pets.push(pet1,pet2,pet3);
+
+    console.log(pets);
+}
+
+window.onload=init;// wait to render the HTML
